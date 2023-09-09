@@ -3,8 +3,7 @@ package org.example.entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.craft.collections.CraftArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,7 +69,7 @@ public class Raider extends BaseEntity {
     }
 
     private boolean isCountryValid(String country) {
-        ArrayList<String> countries = new ArrayList<>(List.of("afghanistan", "albania", "algeria", "andorra", "angola", "antigua and barbuda", "argentina", "armenia",
+        CraftArrayList<String> countries = new CraftArrayList<>({"afghanistan", "albania", "algeria", "andorra", "angola", "antigua and barbuda", "argentina", "armenia",
                 "australia", "austria", "azerbaijan", "bahamas", "bahrain", "bangladesh", "barbados", "belarus",
                 "belgium", "belize", "benin", "bhutan", "bolivia", "bosnia and herzegovina", "botswana", "brazil",
                 "brunei", "bulgaria", "burkina faso", "burundi", "cabo verde", "cambodia", "cameroon", "canada",
@@ -94,7 +93,7 @@ public class Raider extends BaseEntity {
                 "syria", "taiwan", "tajikistan", "tanzania", "thailand", "timor-leste", "togo", "tonga", "trinidad and tobago",
                 "tunisia", "turkey", "turkmenistan", "tuvalu", "uganda", "ukraine", "united arab emirates", "united kingdom",
                 "united states of america", "uruguay", "uzbekistan", "vanuatu", "vatican city", "venezuela", "vietnam",
-                "yemen", "zambia", "zimbabwe"));
+                "yemen", "zambia", "zimbabwe"};);
 
         if (countries.contains(country.toLowerCase())) return true;
         throw new IllegalArgumentException("Country should contain the full name of the actual country");

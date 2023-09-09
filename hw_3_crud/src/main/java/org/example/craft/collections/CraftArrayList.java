@@ -8,11 +8,21 @@ import java.util.Arrays;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CraftArrayList<O> {
 
-    Object[] array = new Object[10];
-
+    Object[] array;
     int lastIndex = 0;
 
+    public CraftArrayList(O[] array) {
+        this.array = array;
+        lastIndex = array.length - 1;
+    }
+
+    public CraftArrayList() {
+    }
+
     public void create(O value) {
+        if (array == null) {
+            array = new Object[10];
+        }
         if (lastIndex == array.length) {
             Object[] tempArray = new Object[this.array.length * 2];
             System.arraycopy(array, 0, tempArray, 0, array.length);
@@ -44,6 +54,17 @@ public class CraftArrayList<O> {
                 return;
             }
         }
+    }
+
+    public boolean conteis(O value) {
+        if (array!= null){
+        for (O o : array) {
+            if (o.equals(value)) {
+                return true;
+            }
+        }
+        }
+        return false;
     }
 
     public int size() {
