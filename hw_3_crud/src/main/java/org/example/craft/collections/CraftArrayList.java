@@ -56,9 +56,9 @@ public class CraftArrayList<O> {
         }
     }
 
-    public boolean conteis(O value) {
+    public boolean contains(O value) {
         if (array!= null){
-        for (O o : array) {
+        for (Object o : array) {
             if (o.equals(value)) {
                 return true;
             }

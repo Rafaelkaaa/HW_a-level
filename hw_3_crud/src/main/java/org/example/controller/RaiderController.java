@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RaiderController {
-    RaiderCrudServiceImpl raiderCrud;
+    final RaiderCrudServiceImpl raiderCrud;
     Scanner scanner;
 
     final static String MAIN_MENU_MESSAGE = "Choose operation:\n" +
@@ -63,6 +63,7 @@ public class RaiderController {
         System.out.println(UPDATE_MASSAGE);
         String command = scanner.nextLine();
         switch (command) {
+            case "MAIN" -> mainMenu();
             case "ID" -> {
                 System.out.println("Entered raider ID");
                 String id = scanner.nextLine();
@@ -81,10 +82,8 @@ public class RaiderController {
                 } catch (RuntimeException ex) {
                     System.err.println(ex.getMessage());
                     update();
-                    return;
                 }
             }
-            case "MAIN" -> mainMenu();
             default -> {
                 System.out.println("Entered command invalid");
                 update();
@@ -97,6 +96,7 @@ public class RaiderController {
         System.out.println(READ_MASSAGE);
         String command = scanner.nextLine();
         switch (command) {
+            case "MAIN" -> mainMenu();
             case "ID" -> {
                 try {
                     System.out.println("Entered raider ID");
@@ -112,7 +112,6 @@ public class RaiderController {
                 System.out.println(raiderCrud.read(index).toString());
             }
             case "ALL" -> System.out.println(raiderCrud.findAll().toString());
-            case "MAIN" -> mainMenu();
             default -> {
                 System.out.println("Entered command invalid");
                 read();
@@ -125,11 +124,12 @@ public class RaiderController {
         String command = scanner.nextLine();
 
         switch (command) {
+            case "MAIN" -> mainMenu();
             case "ID" -> {
                 try {
                     System.out.println("Entered raider ID");
                     String id = scanner.nextLine();
-                    getRaiderCrud().delete(id);
+                    raiderCrud.delete(id);
                 } catch (IllegalArgumentException ex) {
                     System.err.println(ex.getMessage());
                 }
@@ -137,9 +137,8 @@ public class RaiderController {
             case "IND" -> {
                 System.out.println("Entered raider index");
                 int index = Integer.parseInt(scanner.nextLine());
-                getRaiderCrud().delete(index);
+                raiderCrud.delete(index);
             }
-            case "MAIN" -> mainMenu();
             default -> {
                 System.out.println("Entered command invalid");
                 delete();
@@ -159,17 +158,13 @@ public class RaiderController {
             create();
             return;
         }
-        getRaiderCrud().create(raider);
+       raiderCrud.create(raider);
     }
 
     void backToMainMenu(String command) {
         if (command.equals("MAIN")) {
             mainMenu();
         }
-    }
-
-    public RaiderCrudServiceImpl getRaiderCrud() {
-        return raiderCrud;
     }
 
     private Integer readBooty() {
