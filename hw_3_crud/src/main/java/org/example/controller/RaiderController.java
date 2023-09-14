@@ -179,7 +179,6 @@ public class RaiderController {
         return Integer.parseInt(booty);
     }
 
-
     private String readGoalRaid() {
         System.out.println("Enter the raider's goal (Goal raid should contain from 15 till 500 characters)\n" +
                 "For return to the main menu, write \"MAIN\"");
