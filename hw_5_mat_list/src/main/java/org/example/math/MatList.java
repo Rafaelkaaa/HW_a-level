@@ -42,15 +42,15 @@ public class MatList<E extends Number> {
 
     public  void join(MatList... ml) {
         MatList mathList = new MatList<>(ml);
-        matList.concat(mathList.getMatList());
+        this.matList.concat(mathList.getMatList());
     }
 
     public  void intersection(MatList... ml) {
-        join(ml);
-        for (int i = 0; i < ml.length; i++) {
-            for (int j = 0; j < matList.size(); j++) {
-                if (!ml[i].getMatList().contains(matList.get(j))) {
-                    matList.remove(j);
+        MatList matList = new MatList(ml);
+        for (int i = 0; i < matList.getMatList().size(); i++) {
+            for (int j = 0; j < this.matList.size(); j++) {
+                if (!matList.getMatList().contains(this.matList.get(j))) {
+                    this.matList.remove(j);
                 }
             }
         }
@@ -149,7 +149,7 @@ public class MatList<E extends Number> {
 
     public Number[] toArray() {
         Number[] numbers = new Number[matList.size()];
-        for (int i = 0; i <= matList.size(); i++) {
+        for (int i = 0; i < matList.size(); i++) {
             numbers[i] = matList.get(i);
         }
         return numbers;
