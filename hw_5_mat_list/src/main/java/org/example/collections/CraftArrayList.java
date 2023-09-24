@@ -35,15 +35,17 @@ public class CraftArrayList<O> {
     }
 
     public void remove(int index) {
-        System.arraycopy(this.array, index + 1, this.array, index, this.array.length - 1 - index);
-        lastIndex--;
+        Object[] newArray = new Object[array.length - 1];
+            System.arraycopy(array, 0, newArray, 0, index);
+            System.arraycopy(array, index + 1, newArray, index, array.length - index - 1);
+        array = (O[]) newArray;
+        --lastIndex;
     }
 
     public void remove(O value) {
         for (int i = 0; i < size(); i++) {
             if (array[i].equals(value)) {
                 remove(i);
-                return;
             }
         }
     }
