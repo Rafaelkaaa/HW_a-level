@@ -5,7 +5,7 @@ import org.example.model.BaseEntity;
 import org.example.model.StudentGroupEntry;
 
 public interface ClassesCrudService<O extends BaseEntity> {
-    CraftArrayList<StudentGroupEntry> classes = new CraftArrayList();
+    CraftArrayList<StudentGroupEntry> classes = new CraftArrayList<>(); // не зовсім гарна ідея
     void create(O value);
     O read(String id);
     O read(int index);

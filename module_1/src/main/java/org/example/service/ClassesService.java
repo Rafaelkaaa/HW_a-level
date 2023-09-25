@@ -5,6 +5,7 @@ import org.example.model.BaseEntity;
 import org.example.model.StudentGroupEntry;
 
 public class ClassesService<O extends BaseEntity> {
+
      O read(String id, CraftArrayList<O> values) throws IllegalArgumentException {
         for (int i = 0; i < values.size(); i++) {
             O value = values.get(i);

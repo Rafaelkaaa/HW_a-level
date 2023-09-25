@@ -8,6 +8,7 @@ import org.example.model.StudentGroupEntry;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GroupCrudService implements ClassesCrudService<Group> {
+
     CraftArrayList<Group> groups;
     ClassesService<Group> classesService;
 
