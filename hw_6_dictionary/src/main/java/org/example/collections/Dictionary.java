@@ -128,10 +128,7 @@ public class Dictionary<K, V> {
     public boolean clear() {
         arrayList = new CraftArrayList<>(new CraftArrayList[15]);
         count = 0;
-        if (isEmpty()) {
-            return true;
-        }
-        return false;
+        return isEmpty();
     }
 
     public CraftSet<K> keySet() {

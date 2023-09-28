@@ -1,7 +1,5 @@
 package org.example.collections;
 
-import org.example.node.NodeDictionary;
-
 public class CraftSet<K> {
     Dictionary<K,Object> dictionary = new Dictionary<>();
 
