@@ -8,7 +8,7 @@ import org.example.model.StudentGroupEntry;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudentCrudService implements ClassesCrudService<Student> {
-    CraftArrayList<Student> students = new CraftArrayList();
+    CraftArrayList<Student> students = new CraftArrayList<>();
     ClassesService<Student> classesService;
 
     public void create(Student student) {

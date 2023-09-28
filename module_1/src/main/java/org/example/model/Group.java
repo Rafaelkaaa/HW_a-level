@@ -2,17 +2,11 @@ package org.example.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Group extends BaseEntity {
     String name;
-
-    @Override
-    public String toString() {
-        return "Group{" +
-                "name='" + name + '\'' +
-                ", id='" + getId() + '\'' +
-                '}';
-    }
 }

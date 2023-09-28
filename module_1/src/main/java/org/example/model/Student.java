@@ -2,9 +2,11 @@ package org.example.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 public class Student extends BaseEntity {
     String firstName;
     String lastName;
@@ -16,15 +18,5 @@ public class Student extends BaseEntity {
             return;
         }
         throw new IllegalArgumentException("Age should be positive number");
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", id='" + getId() + '\'' +
-                '}';
     }
 }
