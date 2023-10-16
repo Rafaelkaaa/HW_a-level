@@ -14,8 +14,8 @@ import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FileService {
-    ArrayList<String> filesList = new ArrayList<>();
-    File file;
+    private ArrayList<String> filesList = new ArrayList<>();
+    private File file;
 
     public ArrayList<String> readFile(String dirPath) {
         file = new File(dirPath);
@@ -33,8 +33,10 @@ public class FileService {
 
     private void readDir(File file) {
         File[] files = file.listFiles();
-        for (File f : files) {
-            readFile(f.getAbsolutePath());
+        if (files != null) {
+            for (File f : files) {
+                readFile(f.getAbsolutePath());
+            }
         }
     }
 
@@ -61,11 +63,14 @@ public class FileService {
     }
 
     public void deleteAllInDir(File file) {
-        for (File f : file.listFiles()) {
-            if (f.isDirectory()) {
-                deleteAllInDir(f);
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    deleteAllInDir(f);
+                }
+                f.delete();
             }
-            f.delete();
         }
     }
 
