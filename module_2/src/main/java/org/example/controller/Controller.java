@@ -15,7 +15,7 @@ public class Controller {
     final CityService cityService = new CityService();
 
     public void start(List<String> routes) {
-        String filePath = "module_2/file";
+        String filePath = "file";
         FileService fileService = new FileService(filePath);
         fileService.writeOutputIntoFile();
         fileService.appendStringIntoFile(Integer.toString(routes.size()),true);
