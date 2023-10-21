@@ -60,6 +60,6 @@ public class MatApp {
         System.out.println("clear({1,4,12})\n" + matList);
 
         matList.clear();
-        System.out.println("clear({1,4,12})\n" + matList);
+        System.out.println("clear()\n" + matList);
     }
 }

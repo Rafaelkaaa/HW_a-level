@@ -19,8 +19,8 @@ public class FileController {
     static final String CHOOSE_FILE_OR_DIRECTORY = "Enter 1 for work with file\n" +
             "Enter 2 for work with directory";
 
-    BufferedReader reader;
-    FileService fileService;
+    private final BufferedReader reader;
+    private final FileService fileService;
 
     boolean isDir;
 
@@ -85,7 +85,6 @@ public class FileController {
             System.err.println(e.getMessage());
             findAllByDir();
         }
-
     }
 
     private void moveToDir() {
@@ -104,7 +103,7 @@ public class FileController {
         System.out.println("Enter file or directory path");
         if (fileService.delete(readInConsole())){
             System.out.println("Deleted successful");
-        }else {
+        } else {
             System.err.println("Cannot be deleted try another path");
         }
     }
