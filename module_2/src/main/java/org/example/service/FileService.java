@@ -6,8 +6,10 @@ import lombok.experimental.FieldDefaults;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FileService {
+
     final String filePath;
 
     public FileService(String filePath) {
@@ -15,7 +17,7 @@ public class FileService {
     }
 
     public List<String> readFileText() {
-        List stringList = new ArrayList();
+        List<String> stringList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {

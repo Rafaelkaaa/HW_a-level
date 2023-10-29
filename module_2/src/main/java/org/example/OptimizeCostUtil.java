@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OptimizeCostUtil {
     final WayService wayService;
@@ -26,7 +27,7 @@ public class OptimizeCostUtil {
     public int minRouteCost(City from, City to) {
         routes = new ArrayList<>();
         findAllRoutes(from, to);
-        if (routes.size() < 1) {
+        if (routes.isEmpty()) {
             throw new RuntimeException("Cant find rout from "
                     + from.getName() + " to " + to.getName());
         }
@@ -35,7 +36,7 @@ public class OptimizeCostUtil {
         return routeCosts.get(0);
     }
 
-    public List findAllRoutes(City from, City to) {
+    public void findAllRoutes(City from, City to) {
         List<Way> ways = new ArrayList<>(wayService.idLikeCity1(from.getId()));
 
         if (routes.isEmpty()) {
@@ -50,20 +51,19 @@ public class OptimizeCostUtil {
         for (List<Way> route : routes) {
             findAllRoutes(cityService.findByID(route.get(route.size() - 1).getCityId2()), to);
         }
-        return this.routes = this.routes.stream()
+        this.routes = this.routes.stream()
                 .filter(route -> route.get(route.size() - 1).getCityId2() == to.getId() ||
                         route.get(route.size() - 1).getCityId1() == to.getId())
                 .toList();
     }
 
     private List<List<Way>> routesRequiringContinuation(City from, City to) {
-        List<List<Way>> routes = new ArrayList<>(this.routes
+        return new ArrayList<>(this.routes
                 .stream()
                 .filter(route -> route.get(route.size() - 1).getCityId2() != to.getId()
                         && route.get(route.size() - 1).getCityId2() != first.getId()
                         && route.get(route.size() - 1).getCityId2() != from.getId())
                 .toList());
-        return routes;
     }
 
     private void fillInRoutesList(City from, City to, List<Way> ways) {

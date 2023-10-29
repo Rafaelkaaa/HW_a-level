@@ -7,12 +7,14 @@ import org.example.entity.Way;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class WayService {
-    @Getter
-    List<Way> ways = new ArrayList<>();
 
-    public boolean stringToWaysList(List<String> stringList, CityService cityService) {
+    final List<Way> ways = new ArrayList<>();
+
+    public void stringToWaysList(List<String> stringList, CityService cityService) {
         int countWays = 0;
         int stringListIndex = 1;
         for (int i = 0; i < cityService.getCities().size(); i++) {
@@ -22,7 +24,6 @@ public class WayService {
             stringToWay(stringList, cityService, stringListIndex, countCityWays, cityName);
             stringListIndex += countCityWays + 2;
         }
-        return ways.size() == countWays / 2;
     }
 
     public List<Way> findByCityId(int id) {

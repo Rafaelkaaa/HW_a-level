@@ -9,13 +9,15 @@ import org.example.service.RouteService;
 import org.example.service.WayService;
 
 import java.util.List;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Controller {
+
     final WayService wayService = new WayService();
     final CityService cityService = new CityService();
 
     public void start(List<String> routes) {
-        String filePath = "file";
+        String filePath = "input.txt";
         FileService fileService = new FileService(filePath);
         fileService.writeOutputIntoFile();
         fileService.appendStringIntoFile(Integer.toString(routes.size()),true);

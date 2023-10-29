@@ -8,12 +8,13 @@ import org.example.entity.City;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CityService {
-    @Getter
-    List<City> cities = new ArrayList<>();
 
-    public boolean stringListToCitiesList(List<String> stringList) {
+    final List<City> cities = new ArrayList<>();
+
+    public void stringListToCitiesList(List<String> stringList) {
         int length = Integer.parseInt(stringList.get(0));
         stringList.remove(0);
         int stringListIndex = 0;
@@ -21,7 +22,6 @@ public class CityService {
             City city = create(stringList, stringListIndex);
             stringListIndex += city.getCountWays() + 2;
         }
-        return length == cities.size();
     }
 
     public City findByName(String name) {
