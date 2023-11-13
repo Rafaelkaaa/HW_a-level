@@ -9,6 +9,7 @@ import org.example.service.ClassesCrudService;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GroupCrudService implements ClassesCrudService<Group> {
@@ -20,7 +21,7 @@ public class GroupCrudService implements ClassesCrudService<Group> {
 
     @Override
     public Group read(String id) {
-        return groupDao.read(id);
+        return groupDao.read(UUID.fromString(id));
     }
 
     @Override
@@ -35,16 +36,16 @@ public class GroupCrudService implements ClassesCrudService<Group> {
 
     @Override
     public void delete(String id) {
-        groupDao.delete(id);
+        groupDao.delete(UUID.fromString(id));
     }
 
     @Override
     public void addStudentToGroup(String studentId, String groupId) {
-        groupDao.addStudentToGroup(studentId, groupId);
+        groupDao.addStudentToGroup(UUID.fromString(studentId), UUID.fromString(groupId));
     }
 
     public List<Group> findByStudentId(String id) {
-        return groupDao.findByStudentId(id);
+        return groupDao.findByStudentId(UUID.fromString(id)).stream().toList();
     }
 
 }

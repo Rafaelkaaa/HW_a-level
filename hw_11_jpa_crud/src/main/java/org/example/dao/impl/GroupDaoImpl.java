@@ -5,8 +5,12 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.example.dao.GroupDao;
 import org.example.model.Group;
+import org.example.model.Student;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class GroupDaoImpl implements GroupDao {
     private final EntityManagerFactory emf = Persistence
@@ -21,7 +25,7 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public Group read(String id) {
+    public Group read(UUID id) {
         return entityManager.find(Group.class, id);
     }
 
@@ -33,7 +37,7 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(UUID id) {
         entityManager.getTransaction().begin();
         entityManager.remove(read(id));
         entityManager.getTransaction().commit();
@@ -45,22 +49,36 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public void addStudentToGroup(String studentId, String groupId) {
-        entityManager.createNativeQuery("insert into stu_gro values (?,?)")
-                .setParameter(1, groupId)
-                .setParameter(2, studentId);
+    public void addStudentToGroup(UUID studentId, UUID groupId) {
+        entityManager.getTransaction().begin();
+
+        Student student = entityManager.find(Student.class, studentId);
+        Group group = entityManager.find(Group.class, groupId);
+
+        if (student != null && group != null) {
+            Set<Group> groups = student.getGroups();
+            if (groups == null) {
+                groups = new HashSet<>();
+            }
+            groups.add(group);
+            student.setGroups(groups);
+
+            Set<Student> students = group.getStudents();
+            if (students == null) {
+                students = new HashSet<>();
+            }
+            students.add(student);
+            group.setStudents(students);
+
+            entityManager.merge(student);
+            entityManager.merge(group);
+        }
+
+        entityManager.getTransaction().commit();
     }
 
     @Override
-    public List<Group> findByStudentId(String id) {
-        List<Group> groups = entityManager
-                .createNativeQuery("SELECT * FROM classes.stu_gro " +
-                        "INNER JOIN classes.groups " +
-                        "ON classes.stu_gro.group_id = classes.groups.id " +
-                        "WHERE classes.stu_gro.student_id =?")
-                .setParameter(1, id)
-                .getResultList();
-        return groups;
+    public Set<Group> findByStudentId(UUID id) {
+        return entityManager.find(Student.class, id).getGroups();
     }
-
 }

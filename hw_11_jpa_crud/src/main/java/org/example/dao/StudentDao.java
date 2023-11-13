@@ -2,8 +2,9 @@ package org.example.dao;
 
 import org.example.model.Student;
 
-import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public interface StudentDao extends ClassDao<Student>{
-    List<Student> findByGroupId (String id);
+    Set<Student> findByGroupId (UUID id);
 }
