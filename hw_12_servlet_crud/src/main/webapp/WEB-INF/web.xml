@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+        version="6.0"
+        metadata-complete="true">
+
+    <servlet>
+        <servlet-name>studentReviewController</servlet-name>
+        <servlet-class>org.example.controller.student.StudentReviewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>studentReviewController</servlet-name>
+        <url-pattern>/students</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>studentCreatController</servlet-name>
+        <servlet-class>org.example.controller.student.StudentCreateController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>studentCreatController</servlet-name>
+        <url-pattern>/students/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>studentDeleteController</servlet-name>
+        <servlet-class>org.example.controller.student.StudentDeleteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>studentDeleteController</servlet-name>
+        <url-pattern>/students/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>studentUpdateController</servlet-name>
+        <servlet-class>org.example.controller.student.StudentUpdateController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>studentUpdateController</servlet-name>
+        <url-pattern>/students/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>groupReviewController</servlet-name>
+        <servlet-class>org.example.controller.group.GroupReviewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>groupReviewController</servlet-name>
+        <url-pattern>/groups</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>groupCreatController</servlet-name>
+        <servlet-class>org.example.controller.group.GroupCreateController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>groupCreatController</servlet-name>
+        <url-pattern>/groups/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>groupDeleteController</servlet-name>
+        <servlet-class>org.example.controller.group.GroupDeleteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>groupDeleteController</servlet-name>
+        <url-pattern>/groups/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>groupUpdateController</servlet-name>
+        <servlet-class>org.example.controller.group.GroupUpdateController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>groupUpdateController</servlet-name>
+        <url-pattern>/groups/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>classReviewController</servlet-name>
+        <servlet-class>org.example.controller.clazz.ClassReviewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>classReviewController</servlet-name>
+        <url-pattern>/students/groups</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>groupAddStudentController</servlet-name>
+        <servlet-class>org.example.controller.clazz.GroupAddStudentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>groupAddStudentController</servlet-name>
+        <url-pattern>/students/groups/add</url-pattern>
+    </servlet-mapping>
+
+</web-app>
