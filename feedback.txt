@@ -27,3 +27,14 @@ module 2 - звісно ж зараховую, тут питань нема)
 
 10-11 а взагалі ... ну вибач ... не нема шо коментувати, це залегкі дз для тебе)
 добивай модуль, дз та думай вже про фінал проект
+
+м3
+
+public class BaseCrudDaoImpl<O extends BaseEntity> implements BaseCrudDao <O>{
+    private final EntityManagerFactory emf = Persistence
+            .createEntityManagerFactory("jpa-hibernate-postgresql");
+
+            от це не дуже добре)
+            по суті - один конекшн на всі даошки)
+            в випадку дз то норм - один юзер - ти)))
+            та для проду то не ок)
