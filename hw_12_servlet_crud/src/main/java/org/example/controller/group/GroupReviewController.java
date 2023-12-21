@@ -25,15 +25,15 @@ public class GroupReviewController extends HttpServlet {
             printWriter.write("<body>");
 
             printWriter.write("<header>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students/groups\">Classes</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students\">Students</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/groups\">Groups</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students/groups\">Classes</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students\">Students</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/hw_12_servlet_crud/groups\">Groups</a></h2>");
             printWriter.write("</header>");
 
             printWriter.write("<h1>");
             printWriter.write("All groups");
             printWriter.write("</h1>");
-            printWriter.write("<h3><a href=\"/groups/new\">Create new Group</a></h3>");
+            printWriter.write("<h3><a href=\"/hw_12_servlet_crud/groups/new\">Create new Group</a></h3>");
 
             printWriter.write("<table>");
             printWriter.write("<tr>");
@@ -46,13 +46,13 @@ public class GroupReviewController extends HttpServlet {
                 printWriter.write(group.getName());
                 printWriter.write("</td>");
                 printWriter.write("<td>");
-                printWriter.write("<form method=\"post\" action=\"http://localhost:8080/groups/delete\">");
+                printWriter.write("<form method=\"post\" action=\"http://localhost:8080/hw_12_servlet_crud/groups/delete\">");
                 printWriter.write("<input type=\"hidden\" name=\"id\" value=\"" + group.getId() + "\" />");
                 printWriter.write("<input type=\"submit\" value=\"Delete\" />");
                 printWriter.write("</form>");
                 printWriter.write("</td>");
                 printWriter.write("<td>");
-                printWriter.write("<form method=\"get\" action=\"http://localhost:8080/groups/update\">");
+                printWriter.write("<form method=\"get\" action=\"http://localhost:8080/hw_12_servlet_crud/groups/update\">");
                 printWriter.write("<input type=\"hidden\" name=\"id\" value=\"" + group.getId() + "\" />");
                 printWriter.write("<input type=\"submit\" value=\"Update\" />");
                 printWriter.write("</form>");

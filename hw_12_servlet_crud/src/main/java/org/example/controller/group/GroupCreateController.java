@@ -22,16 +22,16 @@ public class GroupCreateController extends HttpServlet {
             printWriter.write("<body>");
 
             printWriter.write("<header>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students/groups\">Classes</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students\">Students</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/groups\">Groups</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students/groups\">Classes</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students\">Students</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/hw_12_servlet_crud/groups\">Groups</a></h2>");
             printWriter.write("</header>");
 
             printWriter.write("<h1>");
             printWriter.write("Create new group");
             printWriter.write("</h1>");
 
-            printWriter.write("<form method='post' action = '/groups/new'>");
+            printWriter.write("<form method='post' action = '/hw_12_servlet_crud/groups/new'>");
             printWriter.write("<label for='Name'>Name:</label><br>");
             printWriter.write("<input type='text' id='Name' name='groupName'/><br><br>");
 
@@ -52,7 +52,7 @@ public class GroupCreateController extends HttpServlet {
 
         groupService.create(group);
         try {
-            resp.sendRedirect("/groups");
+            resp.sendRedirect("/hw_12_servlet_crud/groups");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
