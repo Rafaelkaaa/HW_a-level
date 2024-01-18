@@ -18,7 +18,7 @@ public class GroupDeleteController extends HttpServlet {
             groupService.delete(groupId);
             resp.setStatus(200);
             try {
-                resp.sendRedirect("/groups");
+                resp.sendRedirect("/hw_12_servlet_crud/groups");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -18,7 +18,7 @@ public class StudentDeleteController extends HttpServlet {
             studentService.delete(studentId);
             resp.setStatus(200);
             try {
-                resp.sendRedirect("/students");
+                resp.sendRedirect("/hw_12_servlet_crud/students");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

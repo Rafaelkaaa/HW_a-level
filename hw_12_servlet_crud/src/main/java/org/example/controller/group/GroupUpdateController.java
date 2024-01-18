@@ -25,16 +25,16 @@ public class GroupUpdateController extends HttpServlet {
             printWriter.write("<body>");
 
             printWriter.write("<header>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students/groups\">Classes</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/students\">Students</a></h2>");
-            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/groups\">Groups</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students/groups\">Classes</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block; margin-right: 10px;\"><a href=\"/hw_12_servlet_crud/students\">Students</a></h2>");
+            printWriter.write("<h2 style=\"display: inline-block;\"><a href=\"/hw_12_servlet_crud/groups\">Groups</a></h2>");
             printWriter.write("</header>");
 
             printWriter.write("<h1>");
             printWriter.write("Update group");
             printWriter.write("</h1>");
 
-            printWriter.write("<form method='post' action = '/groups/update'>");
+            printWriter.write("<form method='post' action = '/hw_12_servlet_crud/groups/update'>");
             printWriter.write("<label for='firstName'>First Name:</label><br>");
             printWriter.write("<input type='text' id='firstName' name='groupName' " +
                     "value='" + group.getName() + "'/><br><br>");
@@ -63,6 +63,6 @@ public class GroupUpdateController extends HttpServlet {
             }
         });
         groupCrudService.update(group);
-        resp.sendRedirect("/groups");
+        resp.sendRedirect("/hw_12_servlet_crud/groups");
     }
 }

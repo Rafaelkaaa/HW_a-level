@@ -19,6 +19,6 @@ public class GroupAddStudentController extends HttpServlet {
         String groupId = req.getParameter("groupId");
         String studentId = req.getParameter("studentId");
         groupService.addStudentToGroup(studentId, groupId);
-        resp.sendRedirect("/students/groups");
+        resp.sendRedirect("/hw_12_servlet_crud/students/groups");
     }
 }
