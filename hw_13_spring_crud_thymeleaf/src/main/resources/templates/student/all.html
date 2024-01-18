@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All students</title>
+</head>
+<body>
+<h3><a href="/students/new">Create new Student</a></h3>
+
+<h1>All students</h1>
+<table>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}"></td>
+        <td th:text="${student.getFirstName()}"></td>
+        <td th:text="${student.getLastName()}"></td>
+        <td th:text="${student.getAge()}"></td>
+        <td>
+            <form method="post" th:action="@{'/students/delete/' + ${student.id}}">
+                <input type="hidden" th:field="${student.id}"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+        <td>
+            <form method="get" th:action="@{'/students/update/' + ${student.id}}">
+                <input type="hidden" th:field="${student.id}"/>
+                <input type="submit" value="Update"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

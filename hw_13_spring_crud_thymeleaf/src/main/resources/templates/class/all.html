@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All classes</title>
+</head>
+<body>
+<h1>All classes</h1>
+<h3><a href="/classes/new">Create new Group</a></h3>
+<table th:each="class : ${classes}">
+    <h2 th:text="${class.getGroup().getName()}"></h2>
+
+    <form th:action="@{'/classes'}" method='post' th:object="${addToClassDto}">
+        <input type="hidden" name="groupId" th:value="${class.getGroup().getId()}">
+        <label for="studentId">Choose student:</label>
+        <select id="studentId" name="studentId">
+            <th:block th:each="notInClass : ${studentsNotInClass.get(class.getGroup().getId())}">
+                <option th:value="${notInClass.getId()}" th:text="${notInClass.firstName + ' ' + notInClass.lastName}"></option>
+            </th:block>
+        </select>
+        <button type="submit">Add student</button>
+    </form>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${class.getStudents()}"></td>
+        <td th:text="${student.getFirstName()}"></td>
+        <td th:text="${student.getLastName()}"></td>
+        <td th:text="${student.getAge()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

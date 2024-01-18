@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All groups</title>
+</head>
+<body>
+<h1>All groups</h1>
+<h3><a href="/groups/new">Create new Group</a></h3>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+    </tr>
+    <tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${groups}"></td>
+        <td th:text="${group.getName()}"></td>
+        <td>
+            <form method="post" th:action="@{'/groups/delete/' + ${group.id}}">
+                <input type="hidden" th:field="${group.id}"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+        <td>
+            <form method="get" th:action="@{'/groups/update/' + ${group.id}}">
+                <input type="hidden" th:field="${group.id}"/>
+                <input type="submit" value="Update"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
